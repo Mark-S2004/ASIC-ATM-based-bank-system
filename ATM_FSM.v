@@ -5,7 +5,7 @@ module ATM_FSM #(parameter  balance_width = 20 )
     input wire timeout,
     input wire wrong_psw,
     input wire [balance_width-1:0] current_balance,
-    input wire lang,  // Arabic(1'b0), English(1'b1)
+    input wire lang,  // Arabic(1'b1), English(1'b0)
     input wire [1:0] operation,  // withdraw(2'b00), deposit(2'b01), balance(2'b10)
     input wire [balance_width-1:0] value,
     input wire another_service,
@@ -30,9 +30,28 @@ localparam  idle = 4'b0000 ,
             another_service = 4'b1000 ;
 
 reg [3:0] current_state, next_state ;
-reg [balance_width-1:0] updated_balance_comb ;
+reg [balance_width-1:0] balance_reg ;
 reg [1:0] error_count = 'b0 ;
 reg [1:0] error_reg ;
+
+always @(posedge clk or negedge rst) 
+begin
+    if(!rst)
+    begin
+        balance <= 'b0 ;
+    end
+    else
+    begin
+        if(pass_en)
+        begin
+            balance <= current_balance ;
+        end
+        else
+        begin
+            balance <= balance_reg ;
+        end
+    end   
+end
 
 always @(posedge clk or negedge rst) 
 begin
