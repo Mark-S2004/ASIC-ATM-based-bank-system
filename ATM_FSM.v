@@ -42,7 +42,7 @@ begin
     end
     else
     begin
-        if(pass_en)
+        if(psw_en)
         begin
             balance <= current_balance ;
         end
@@ -252,7 +252,7 @@ begin
         end
     end
 
-    another_service : begin
+    another_service_state : begin
         if(timeout)
         begin
             next_state = idle ;
@@ -269,5 +269,7 @@ begin
 
     endcase
 end
+
+assign restart_timer = another_service||(lang==1'b0)||(lang==1'b1)||(op==2'b00)||(op==2'b01)||(op==2'b10);
 
 endmodule
