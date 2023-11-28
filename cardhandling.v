@@ -8,12 +8,12 @@ module cardhandling #(parameter    card_width   = 6,
     input wire [card_width-1:0] card_number,
     input wire card_in,
     input wire card_out,
-    input wire operation_done,
+    input wire op_done,
     input wire [balance_width-1:0] updated_balance,
     
     output reg [password_width-1:0] password,
     output reg [balance_width-1:0] balance,
-    output reg  pass_en    
+    output reg  psw_en    
 
 );
 
@@ -40,7 +40,7 @@ begin
                 password <= password_mem[card_number] ;
                 balance  <= balance_mem[card_number]  ;
             end
-            if (card_out || operation_done)
+            if (card_out || op_done)
             begin
                 balance_mem[card_number] <= updated_balance;
             end
@@ -57,11 +57,11 @@ always @(posedge clk or negedge rst)
 begin
     if (!rst)
     begin
-        pass_en <= 1'b0;
+        psw_en <= 1'b0;
     end
     else if(card_number < users_num)
     begin
-        pass_en <= card_in;
+        psw_en <= card_in;
     end
 end
 
