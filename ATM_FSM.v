@@ -270,6 +270,199 @@ begin
     endcase
 end
 
+always @ (*)
+begin
+
+    case (current_state)
+    idle : begin
+        op_done = 1'b0 ;
+        error = 1'b0 ;
+        balance_reg = balance ;
+        start_timer = 1'b0 ;
+        card_out = 1'b0 ;
+    end
+
+    lang : begin
+        op_done = 1'b0 ;
+        error = 1'b0 ;
+        balance_reg = balance ;
+        start_timer = 1'b1 ;
+        if(lang)
+        begin
+            $display("Arabic");
+        end
+        else
+        begin
+            $display("English");
+        end
+
+        if(timeout) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end  
+    end
+
+    id : begin
+        operation_done = 1'b0 ;
+        error = 1'b0 ;
+        balance_reg = balance ;
+        start_timer = 1'b1 ;
+
+        if(wrong_id || timeout) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end  
+    end
+
+    psw : begin
+        op_done = 1'b0 ;
+        balance_reg = balance ;
+        start_timer = 1'b1 ;
+        
+
+        if(wrong_psw || timout)
+        begin
+            card_out=1'b1;
+            error=1'b1;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+            error = 1'b0;
+        end
+    end
+
+    op : begin
+        op_done = 1'b0 ;
+        error = 1'b0 ;
+        balance_reg = balance ;
+        start_timer = 1'b1 ;
+
+        if(timeout) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end  
+    end
+
+    withdraw : begin
+        op_done = 1'b0 ;
+        start_timer = 1'b1 ;
+        if(!op_done) 
+        begin
+            if(value > current_balance)
+            begin
+                error = 1'b1 ;
+                balance_reg = balance ;
+                op_done = 1'b0 ;
+            end
+            else
+            begin
+                error = 1'b0 ;
+                balance_reg = balance - value ;
+                op_done = 1'b1 ;
+            end
+        end
+        else
+        begin
+            error = 1'b0 ;
+            balance_reg = balance ;
+            op_done = 1'b1 ;
+        end 
+
+        if(timeout) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end  
+    end
+
+    deposit : begin
+        op_done = 1'b0 ;
+        start_timer = 1'b1 ;
+        if(!op_done) 
+        begin
+                error = 1'b0 ;
+                balance_reg = balance + value ;
+                op_done = 1'b1 ;
+        end
+        else
+        begin
+            error = 1'b0 ;
+            balance_reg = balance ;
+            op_done = 1'b1 ;
+        end
+
+        if(timeout) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end   
+    end
+
+    inquiry : begin
+        operation_done = 1'b0 ;
+        error = 1'b0 ;
+        balance_reg = balance ;
+        start_timer = 1'b1 ;
+        if(!op_done) 
+        begin
+                error = 1'b0 ;
+                balance_reg = balance ;
+                $display("%d",balance);
+                op_done = 1'b1 ;
+        end
+        else
+        begin
+            error = 1'b0 ;
+            balance_reg = balance ;
+            op_done = 1'b1 ;
+        end
+
+        if(timeout) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end  
+    end
+    another_service_state : begin
+        op_done = 1'b0 ;
+        error = 1'b0 ;
+        balance_reg = balance ;
+        start_timer = 1'b1 ;
+
+        if(timeout) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end  
+    end
+    endcase
+end
+
 assign restart_timer = another_service||(lang==1'b0)||(lang==1'b1)||(op==2'b00)||(op==2'b01)||(op==2'b10);
 
 endmodule
