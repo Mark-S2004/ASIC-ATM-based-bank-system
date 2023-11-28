@@ -3,9 +3,10 @@ module ATM_FSM #(parameter  balance_width = 20 )
     input wire clk,
     input wire rst,
     input wire timeout,
+    input wire wrong_id,
     input wire wrong_psw,
     input wire [balance_width-1:0] current_balance,
-    input wire lang,  // Arabic(1'b1), English(1'b0)
+    input wire language,  // Arabic(1'b1), English(1'b0)
     input wire [1:0] operation,  // withdraw(2'b00), deposit(2'b01), balance(2'b10)
     input wire [balance_width-1:0] value,
     input wire another_service,
@@ -27,7 +28,7 @@ localparam  idle = 4'b0000 ,
             withdraw = 4'b0101 ,
             deposit = 4'b0110 ,
             inquiry = 4'b0111 ,
-            another_service = 4'b1000 ;
+            another_service_state = 4'b1000 ;
 
 reg [3:0] current_state, next_state ;
 reg [balance_width-1:0] balance_reg ;
@@ -197,7 +198,7 @@ begin
         end
         if(op_done)
         begin    
-            next_state = another_service ;
+            next_state = another_service_state ;
         end
         else
         begin
@@ -223,7 +224,7 @@ begin
         end
         if(op_done)
         begin
-            next_state = another_service ;
+            next_state = another_service_state ;
         end 
         else 
         begin
@@ -248,7 +249,7 @@ begin
         end
         else
         begin
-            next_state = another_service ;
+            next_state = another_service_state ;
         end
     end
 
@@ -287,7 +288,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
-        if(lang)
+        if(language)
         begin
             $display("Arabic");
         end
@@ -307,7 +308,7 @@ begin
     end
 
     id : begin
-        operation_done = 1'b0 ;
+        op_done = 1'b0 ;
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
@@ -328,7 +329,7 @@ begin
         start_timer = 1'b1 ;
         
 
-        if(wrong_psw || timout)
+        if(wrong_psw || timeout)
         begin
             card_out=1'b1;
             error=1'b1;
@@ -418,7 +419,7 @@ begin
     end
 
     inquiry : begin
-        operation_done = 1'b0 ;
+        op_done = 1'b0 ;
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
@@ -463,6 +464,6 @@ begin
     endcase
 end
 
-assign restart_timer = another_service||(lang==1'b0)||(lang==1'b1)||(op==2'b00)||(op==2'b01)||(op==2'b10);
+assign restart_timer = another_service||(language==1'b0)||(language==1'b1)||(op==2'b00)||(op==2'b01)||(op==2'b10);
 
 endmodule
