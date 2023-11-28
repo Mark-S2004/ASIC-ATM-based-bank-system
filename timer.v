@@ -37,6 +37,7 @@ always @(posedge clk or negedge rst)
         begin
             counter <= 1'b0;
         end
+    end
 endmodule 
 
     
