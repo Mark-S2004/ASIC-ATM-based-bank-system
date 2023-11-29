@@ -13,7 +13,9 @@ module cardhandling #(parameter    card_width   = 6,
     
     output reg [password_width-1:0] password,
     output reg [balance_width-1:0] balance,
-    output reg  psw_en    
+    output reg  psw_en,
+    output reg wrong_id,
+    output reg wrong_psw
 
 );
 
