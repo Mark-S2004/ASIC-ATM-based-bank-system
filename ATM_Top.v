@@ -2,7 +2,7 @@
 `include "cardhandling.v"
 `include "timer.v"
 
-module ATM_TOP #(parameter  password_width = 16,
+module ATM_Top #(parameter  password_width = 16,
                             balance_width = 20, 
 							card_width = 6)
 							
@@ -12,7 +12,7 @@ module ATM_TOP #(parameter  password_width = 16,
 	//cardhandling inputs
 	input wire [card_width-1:0] card_number,
 	input wire card_in,    
-    input wire [password_width-1:0] password_input;
+    input wire [password_width-1:0] password_input,
 	//ATM_FSM inputs 
     input wire language,
     input wire [1:0] operation,
@@ -29,8 +29,8 @@ module ATM_TOP #(parameter  password_width = 16,
 	
 	);
 
-//wire  [B_WIDTH-1:0] updated_balance; //output from ATM_FSM to card_handling
-wire  [B_WIDTH-1:0] balance;//from card_handling to ATM_FSM
+//wire  [balance_width-1:0] updated_balance; //output from ATM_FSM to card_handling
+wire  [balance_width-1:0] balance;//from card_handling to ATM_FSM
 wire  psw_en;//from card_handling to ATM_FSM
 
 //timer inputs 
@@ -39,10 +39,6 @@ wire timeout ; //flag to ATM_FSM that time out the card will be executed (go to 
 //ATM_FSM
 wire start_timer ; // to adjust timer (start running time)
 wire restart_timer; //to reset timer between states 
-
-wire card_out ;
-wire op_done;
-
 
 card_handling U0_card_handling (
     .clk(clk),
@@ -86,8 +82,7 @@ ATM_FSM U0_ATM_FSM (
 	.op_done(op_done),
     .error(error),
     .start_timer(start_timer),
-    .restart_timer(restart_timer),
+    .restart_timer(restart_timer)
 );
-
 
 endmodule
