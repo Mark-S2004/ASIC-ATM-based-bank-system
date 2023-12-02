@@ -10,6 +10,7 @@ module cardhandling #(parameter    card_width   = 6,
     input wire card_out,
     input wire op_done,
     input wire [balance_width-1:0] updated_balance,
+    input wire [password_width:0] password_input ;
     
     output reg [password_width-1:0] password,
     output reg [balance_width-1:0] balance,
@@ -19,16 +20,16 @@ module cardhandling #(parameter    card_width   = 6,
 
 );
 
-reg [password_width-1:0] password_mem [0:users_num-1] ;
-reg [balance_width-1:0] balance_mem  [0:users_num-1] ;
+reg [password_width-1:0] password_reg [0:users_num-1] ;
+reg [balance_width-1:0] balance_reg  [0:users_num-1] ;
 
 
 always @(posedge clk or negedge rst)
 begin
     if (!rst)
     begin
-        $readmemb("password_memory.txt", password_mem );
-        $readmemb("balance_memory.txt" , balance_mem );
+        $readmemb("password_memory.txt", password_reg );
+        $readmemb("balance_memory.txt" , balance_reg );
 
         password <= 1'b0;
         balance <= 1'b0;
@@ -39,12 +40,13 @@ begin
         begin
             if (card_in)
             begin
-                password <= password_mem[card_number] ;
-                balance  <= balance_mem[card_number]  ;
+                password <= password_reg[card_number] ;
+                balance  <= balance_reg[card_number]  ;
+                wrong_psw <= (password_input == password_reg) ? 1'b0 : 1'b1;
             end
             if (card_out || op_done)
             begin
-                balance_mem[card_number] <= updated_balance;
+                balance_reg[card_number] <= updated_balance;
             end
         end
         else 
