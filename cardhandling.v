@@ -10,7 +10,7 @@ module cardhandling #(parameter    card_width   = 6,
     input wire card_out,
     input wire op_done,
     input wire [balance_width-1:0] updated_balance,
-    input wire [password_width:0] password_input ;
+    input wire [password_width-1:0] password_input,
     
     output reg [password_width-1:0] password,
     output reg [balance_width-1:0] balance,
@@ -41,9 +41,8 @@ begin
             begin
                 password <= password_reg[card_number] ;
                 balance  <= balance_reg[card_number]  ;
-                if(password_input != password){
+                if(password_input != password)
                     wrong_psw <= 1'b1;
-                }
             end
             if (card_out || op_done)
             begin
