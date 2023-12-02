@@ -1,6 +1,6 @@
 module cardhandling #(parameter    card_width   = 6,
-                                    password_width   = 16,
-                                    balance_width   = 20,
+                                   password_width   = 16,
+                                   balance_width   = 20,
                                    users_num = 10)
 (
     input wire clk,
@@ -14,7 +14,7 @@ module cardhandling #(parameter    card_width   = 6,
     
     output reg [password_width-1:0] password,
     output reg [balance_width-1:0] balance,
-    output reg  psw_en,
+    output reg psw_en,
     output reg wrong_id,
     output reg wrong_psw
 
@@ -28,8 +28,8 @@ always @(posedge clk or negedge rst)
 begin
     if (!rst)
     begin
-        $readmemb("password_memory.txt", password_reg );
-        $readmemb("balance_memory.txt" , balance_reg );
+        $readmemb("password_memory.txt", password_reg);
+        $readmemb("balance_memory.txt" , balance_reg);
 
         password <= 1'b0;
         balance <= 1'b0;
