@@ -144,15 +144,15 @@ begin
         end
         else
         begin
-            if(op == 2'b00)
+            if(operation == 2'b00)
             begin
                 next_state = withdraw ;
             end
-            else if(op == 2'b01)
+            else if(operation == 2'b01)
             begin
                 next_state = deposit ;
             end
-            else if(op == 2'b10)
+            else if(operation == 2'b10)
             begin
                 next_state = inquiry ;
             end

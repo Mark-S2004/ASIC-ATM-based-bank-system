@@ -12,7 +12,6 @@ module cardhandling #(parameter    card_width   = 6,
     input wire [balance_width-1:0] updated_balance,
     input wire [password_width-1:0] password_input,
     
-    output reg [password_width-1:0] password,
     output reg [balance_width-1:0] balance,
     output reg psw_en,
     output reg wrong_psw
@@ -21,6 +20,7 @@ module cardhandling #(parameter    card_width   = 6,
 
 reg [password_width-1:0] password_reg [0:users_num-1] ;
 reg [balance_width-1:0] balance_reg  [0:users_num-1] ;
+reg [password_width-1:0] password;
 
 
 always @(posedge clk or negedge rst)
