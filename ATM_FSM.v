@@ -421,6 +421,6 @@ begin
     endcase
 end
 
-assign restart_timer = another_service||(language==1'b0)||(language==1'b1)||(op==2'b00)||(op==2'b01)||(op==2'b10);
+assign restart_timer = another_service||(language==1'b0)||(language==1'b1)||(operation==2'b00)||(operation==2'b01)||(operation==2'b10);
 
 endmodule
