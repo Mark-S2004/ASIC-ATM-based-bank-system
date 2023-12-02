@@ -15,7 +15,6 @@ module cardhandling #(parameter    card_width   = 6,
     output reg [password_width-1:0] password,
     output reg [balance_width-1:0] balance,
     output reg psw_en,
-    output reg wrong_id,
     output reg wrong_psw
 
 );
@@ -42,7 +41,9 @@ begin
             begin
                 password <= password_reg[card_number] ;
                 balance  <= balance_reg[card_number]  ;
-                wrong_psw <= (password_input == password_reg) ? 1'b0 : 1'b1;
+                if(password_input != password){
+                    wrong_psw <= 1'b1;
+                }
             end
             if (card_out || op_done)
             begin

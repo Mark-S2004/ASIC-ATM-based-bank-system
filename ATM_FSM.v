@@ -3,7 +3,6 @@ module ATM_FSM #(parameter  balance_width = 20 )
     input wire clk,
     input wire rst,
     input wire timeout,
-    input wire wrong_id,
     input wire wrong_psw,
     input wire [balance_width-1:0] current_balance,
     input wire language,  // Arabic(1'b1), English(1'b0)
@@ -103,38 +102,12 @@ begin
         begin
             if(language == 1'b0 || language == 1'b1)
             begin
-                next_state = id ;
+                next_state = psw ;
             end
             else
             begin
                 next_state = lang ;
             end
-        end
-    end
-
-    id : begin
-        error_count = error_reg;
-        if(timeout)
-        begin
-            next_state = idle ;
-        end
-        if(wrong_id)
-        begin
-            if(error_reg == 2'b10)
-            begin
-                error_count = 2'b0;
-                next_state = idle ;
-            end
-            else
-            begin
-                error_count = error_reg + 1'b1 ;
-                next_state = id ;
-            end    
-        end
-        else
-        begin
-            error_count = 2'b0;
-            next_state = psw ;
         end
     end
 
@@ -298,22 +271,6 @@ begin
         end
 
         if(timeout) 
-        begin
-            card_out = 1'b1 ;
-        end
-        else
-        begin
-            card_out = 1'b0 ;
-        end  
-    end
-
-    id : begin
-        op_done = 1'b0 ;
-        error = 1'b0 ;
-        balance_reg = balance ;
-        start_timer = 1'b1 ;
-
-        if(wrong_id || timeout) 
         begin
             card_out = 1'b1 ;
         end
