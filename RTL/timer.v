@@ -1,11 +1,10 @@
-module timer (
+module timer #(parameter threshold = 32'd10)
+(
     input wire clk,
     input wire rst,
     input wire start,
     input wire restart,
-    input wire [31:0] threshold,
     output reg timeout
-
 );
 
 reg[31:0] counter;
