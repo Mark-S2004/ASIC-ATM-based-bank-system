@@ -38,7 +38,7 @@ wire timeout ; //flag to ATM_FSM that time out the card will be executed (go to 
 wire start_timer ; // to adjust timer (start running time)
 wire restart_timer; //to reset timer between states 
 
-card_handling U0_card_handling (
+cardhandling U0_card_handling (
     .clk(clk),
     .rst(rst),
     .card_number(card_number),
