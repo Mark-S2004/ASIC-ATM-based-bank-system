@@ -60,8 +60,6 @@ timer U0_timer (
     .rst(rst),
     .start(start_timer),
 	.restart(restart_timer),
-    .threshold(threshold),
-
     .timeout(timeout)
 );
 
