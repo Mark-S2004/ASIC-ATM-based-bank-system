@@ -27,8 +27,8 @@ always @(posedge clk or negedge rst)
 begin
     if (!rst)
     begin
-        $readmemb("password_memory.txt", password_reg);
-        $readmemb("balance_memory.txt" , balance_reg);
+        $readmemb("./Database/password_memory.txt", password_reg);
+        $readmemb("./Database/balance_memory.txt" , balance_reg);
 
         balance <= 1'b0;
     end
