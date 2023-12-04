@@ -30,7 +30,6 @@ begin
         $readmemb("password_memory.txt", password_reg);
         $readmemb("balance_memory.txt" , balance_reg);
 
-        password <= 1'b0;
         balance <= 1'b0;
     end
     else 
@@ -51,7 +50,6 @@ begin
         end
         else 
         begin
-            password <= 1'b0;
             balance <= 1'b0;
         end
     end
