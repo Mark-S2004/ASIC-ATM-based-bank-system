@@ -1,4 +1,4 @@
-module cardhandling_tb;
+module cardHandling_tb;
     // inputs
   parameter card_width = 6;
   parameter password_width = 16;
