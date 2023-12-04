@@ -18,8 +18,6 @@ module ATM_Top #(parameter  password_width = 16,
     input wire [1:0] operation,
     input wire [balance_width-1:0] value,
     input wire another_service,	
-	//timer input 
-	input wire [31:0] threshold,
 	//output from ATM_FSM
 	output wire	card_out,
 	output wire [balance_width-1:0] updated_balance, //output from ATM_FSM and also transmitted to card_handling to update user data
