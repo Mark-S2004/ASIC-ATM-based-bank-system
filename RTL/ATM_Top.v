@@ -11,15 +11,16 @@ module ATM_Top #(parameter  password_width = 16,
     input wire rst,
 	//cardhandling inputs
 	input wire [card_width-1:0] card_number,
-	input wire card_in,    
     input wire [password_width-1:0] password_input,
+//inout port
+	inout card_in,    
+
 	//ATM_FSM inputs 
     input wire language,
     input wire [1:0] operation,
     input wire [balance_width-1:0] value,
     input wire another_service,	
 	//output from ATM_FSM
-	output wire	card_out,
 	output wire [balance_width-1:0] updated_balance, //output from ATM_FSM and also transmitted to card_handling to update user data
 	output wire op_done, 
 	output wire error,
@@ -43,13 +44,11 @@ cardhandling U0_card_handling (
     .rst(rst),
     .card_number(card_number),
     .card_in(card_in),
-	.card_out(card_out),
     .op_done(op_done),
 	.updated_balance(updated_balance),
     .password_input(password_input),
 
     .balance(balance),
-    .psw_en(psw_en),
     .wrong_psw(wrong_psw)
 );
 
@@ -71,10 +70,9 @@ ATM_FSM U0_ATM_FSM (
     .operation(operation),
     .value(value),
     .another_service(another_service),
-    .psw_en(psw_en),
 
     .balance(updated_balance),
-	.card_out(card_out),
+	.card_in(card_in),
 	.op_done(op_done),
     .error(error),
     .start_timer(start_timer),
