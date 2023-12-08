@@ -9,10 +9,11 @@ module ATM_FSM #(parameter  balance_width = 20 )
     input wire [1:0] operation,  // withdraw(2'b00), deposit(2'b01), balance(2'b10)
     input wire [balance_width-1:0] value,
     input wire another_service,
-    input wire psw_en,
+
+
+    inout card_in,
 
     output reg [balance_width-1:0] balance,
-    output reg card_out,
     output reg op_done,
     output reg error, 
     output reg start_timer, 
@@ -42,7 +43,7 @@ begin
     end
     else
     begin
-        if(psw_en)
+        if(card_in)
         begin
             balance <= current_balance ;
         end
@@ -83,7 +84,7 @@ begin
 
     case (current_state)
     idle : begin
-        if(psw_en)
+        if(card_in)
         begin
             next_state = lang ;
         end
@@ -253,7 +254,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b0 ;
-        card_out = 1'b0 ;
+        card_in = 1'b1 ;
     end
 
     lang : begin
@@ -272,11 +273,11 @@ begin
 
         if(timeout) 
         begin
-            card_out = 1'b1 ;
+            card_in = 1'b0 ;
         end
         else
         begin
-            card_out = 1'b0 ;
+            card_in = 1'b1 ;
         end  
     end
 
@@ -288,12 +289,12 @@ begin
 
         if(wrong_psw || timeout)
         begin
-            card_out=1'b1;
+            card_in=1'b0;
             error=1'b1;
         end
         else
         begin
-            card_out = 1'b0 ;
+            card_in = 1'b1 ;
             error = 1'b0;
         end
     end
@@ -306,11 +307,11 @@ begin
 
         if(timeout) 
         begin
-            card_out = 1'b1 ;
+            card_in = 1'b0 ;
         end
         else
         begin
-            card_out = 1'b0 ;
+            card_in = 1'b1 ;
         end  
     end
 
@@ -341,11 +342,11 @@ begin
 
         if(timeout) 
         begin
-            card_out = 1'b1 ;
+            card_in = 1'b0 ;
         end
         else
         begin
-            card_out = 1'b0 ;
+            card_in = 1'b1 ;
         end  
     end
 
@@ -367,11 +368,11 @@ begin
 
         if(timeout) 
         begin
-            card_out = 1'b1 ;
+            card_in = 1'b0 ;
         end
         else
         begin
-            card_out = 1'b0 ;
+            card_in = 1'b1 ;
         end   
     end
 
@@ -396,11 +397,11 @@ begin
 
         if(timeout) 
         begin
-            card_out = 1'b1 ;
+            card_in = 1'b0 ;
         end
         else
         begin
-            card_out = 1'b0 ;
+            card_in = 1'b1 ;
         end  
     end
     another_service_state : begin
@@ -411,11 +412,11 @@ begin
 
         if(timeout) 
         begin
-            card_out = 1'b1 ;
+            card_in = 1'b0 ;
         end
         else
         begin
-            card_out = 1'b0 ;
+            card_in = 1'b1 ;
         end  
     end
     endcase
