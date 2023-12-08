@@ -7,13 +7,11 @@ module cardHandling_tb #(parameter  card_width = 6,
     reg rst;
     reg [card_width-1:0] card_number;
     reg card_in;
-    reg card_out;
     reg op_done;
     reg [balance_width-1:0] updated_balance;
     reg [password_width-1:0] password_input;
 
     wire [balance_width-1:0] balance;
-    wire psw_en;
     wire wrong_psw;
 
     integer i;
@@ -30,12 +28,10 @@ module cardHandling_tb #(parameter  card_width = 6,
         .rst(rst),
         .card_number(card_number),
         .card_in(card_in),
-        .card_out(card_out),
         .op_done(op_done),
         .updated_balance(updated_balance),
         .password_input(password_input),
         .balance(balance),
-        .psw_en(psw_en),
         .wrong_psw(wrong_psw)
     );
 
@@ -51,7 +47,6 @@ module cardHandling_tb #(parameter  card_width = 6,
             rst = $random();
             card_number = $random(); 
             card_in = $random();
-            card_out = $random();
             op_done = $random();
             updated_balance = $random();
             password_input = $random();
