@@ -4,7 +4,7 @@
 
 module ATM_Top #(parameter  password_width = 16,
                             balance_width = 20, 
-							card_width = 6)
+							card_width = 3)
 							
 ( 
     input wire clk,

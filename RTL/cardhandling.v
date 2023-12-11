@@ -1,7 +1,7 @@
-module cardhandling #(parameter    card_width   = 6,
+module cardhandling #(parameter    card_width   = 3,
                                    password_width   = 16,
                                    balance_width   = 20,
-                                   users_num = 10)
+                                   users_num = 8)
 (
     input wire clk,
     input wire rst,
