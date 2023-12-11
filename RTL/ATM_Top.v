@@ -2,7 +2,7 @@
 `include "cardhandling.v"
 `include "timer.v"
 
-module ATM_Top #(parameter  password_width = 16,
+module ATM_Top #(parameter  password_width = 4,
                             balance_width = 20, 
 							card_width = 3)
 							

@@ -1,5 +1,5 @@
 module cardHandling_tb #(parameter  card_width = 3,
-                                    password_width = 16,
+                                    password_width = 4,
                                     balance_width = 20,
                                     users_num = 8);
 
