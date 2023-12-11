@@ -1,7 +1,7 @@
 module cardhandling #(parameter    card_width   = 3,
                                    password_width   = 4,
                                    balance_width   = 20,
-                                   users_num = 8)
+                                   users_num = 7)
 (
     input wire clk,
     input wire rst,

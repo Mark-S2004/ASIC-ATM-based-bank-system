@@ -1,11 +1,10 @@
 // memory data file (do not edit the following line - required for mem load use)
 // instance=/cardHandling_tb/DUT/balance_reg
 // format=bin addressradix=h dataradix=b version=1.0 wordsperline=1 noaddress
-10001100100100110100
+10101101100101111110
 00111001001111000010
 01010101011110100110
 01100011101010010111
 11011001111000100011
 10001100011100011101
 11110001001110001011
-00100101000010001010
