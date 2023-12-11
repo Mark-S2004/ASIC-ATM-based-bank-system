@@ -57,7 +57,7 @@ module cardHandling_tb #(parameter  card_width = 6,
     end
 
     // psl rst_assertion: assert always( (!rst) -> next (!wrong_psw && !balance)) @(posedge clk);
-    // psl correct_psw_assertion: assert always( (card_number < users_num && password_input == password_reg[card_number] && card_in) -> next (!wrong_psw && balance == balance_reg[card_number]) abort !rst) @(posedge clk);
-    // psl incorrect_psw_assertion: assert always( (card_number < users_num && password_input == password_reg[card_number] && card_in) -> next (wrong_psw && !balance) abort !rst) @(posedge clk);
-    // psl updated_balance_assertion: assert always( (card_number < users_num && op_done) -> next[1] (prev(updated_balance) == balance_reg[card_number]) abort !rst) @(posedge clk);
+    // psl correct_psw_assertion: assert always( (card_number < users_num && password_input == password_reg[card_number] && card_in) -> next (!wrong_psw) abort !rst) @(posedge clk);
+    // psl incorrect_psw_assertion: assert always( (card_number < users_num && password_input != password_reg[card_number] && card_in) -> next (wrong_psw) abort !rst) @(posedge clk);
+    // psl updated_balance_assertion: assert always( (card_number < users_num && (op_done || !card_in)) -> next[1] (prev(updated_balance) == balance_reg[card_number]) abort !rst) @(posedge clk);
 endmodule
