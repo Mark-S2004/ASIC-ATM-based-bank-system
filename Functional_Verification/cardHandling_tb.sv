@@ -51,7 +51,6 @@ module cardHandling_tb #(parameter  card_width = 6,
             updated_balance = $random();
             password_input = $random();
             @(negedge clk);
-            $readmemb("./Database/password_memory.txt", password_reg);
             $readmemb("./Database/balance_memory.txt" , balance_reg);
         end
         $stop();
