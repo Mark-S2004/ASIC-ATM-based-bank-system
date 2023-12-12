@@ -43,6 +43,8 @@ module cardHandling_tb #(parameter  card_width = 3,
     initial begin
         $readmemb("./Database/password_memory.txt", password_reg);
         $readmemb("./Database/balance_memory.txt" , balance_reg);
+        rst = 0;
+        @(negedge clk);
         for (i = 0; i < 10000; i=i+1) begin
             rst = $random();
             card_number = $random(); 
