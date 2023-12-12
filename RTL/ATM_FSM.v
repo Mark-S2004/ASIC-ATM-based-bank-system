@@ -34,6 +34,7 @@ reg [3:0] current_state, next_state ;
 reg [balance_width-1:0] balance_reg ;
 reg [1:0] error_count = 'b0 ;
 reg [1:0] error_reg ;
+reg card_in_reg;
 
 always @(posedge clk or negedge rst) 
 begin
@@ -254,7 +255,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b0 ;
-        card_in = 1'b1 ;
+        card_in_reg = 1'b1 ;
     end
 
     lang : begin
@@ -273,11 +274,11 @@ begin
 
         if(timeout) 
         begin
-            card_in = 1'b0 ;
+            card_in_reg = 1'b0 ;
         end
         else
         begin
-            card_in = 1'b1 ;
+            card_in_reg = 1'b1 ;
         end  
     end
 
@@ -289,12 +290,12 @@ begin
 
         if(wrong_psw || timeout)
         begin
-            card_in=1'b0;
+            card_in_reg=1'b0;
             error=1'b1;
         end
         else
         begin
-            card_in = 1'b1 ;
+            card_in_reg = 1'b1 ;
             error = 1'b0;
         end
     end
@@ -307,11 +308,11 @@ begin
 
         if(timeout) 
         begin
-            card_in = 1'b0 ;
+            card_in_reg = 1'b0 ;
         end
         else
         begin
-            card_in = 1'b1 ;
+            card_in_reg = 1'b1 ;
         end  
     end
 
@@ -342,11 +343,11 @@ begin
 
         if(timeout) 
         begin
-            card_in = 1'b0 ;
+            card_in_reg = 1'b0 ;
         end
         else
         begin
-            card_in = 1'b1 ;
+            card_in_reg = 1'b1 ;
         end  
     end
 
@@ -368,11 +369,11 @@ begin
 
         if(timeout) 
         begin
-            card_in = 1'b0 ;
+            card_in_reg = 1'b0 ;
         end
         else
         begin
-            card_in = 1'b1 ;
+            card_in_reg = 1'b1 ;
         end   
     end
 
@@ -397,11 +398,11 @@ begin
 
         if(timeout) 
         begin
-            card_in = 1'b0 ;
+            card_in_reg = 1'b0 ;
         end
         else
         begin
-            card_in = 1'b1 ;
+            card_in_reg = 1'b1 ;
         end  
     end
     another_service_state : begin
@@ -412,16 +413,18 @@ begin
 
         if(timeout) 
         begin
-            card_in = 1'b0 ;
+            card_in_reg = 1'b0 ;
         end
         else
         begin
-            card_in = 1'b1 ;
+            card_in_reg = 1'b1 ;
         end  
     end
     endcase
 end
 
 assign restart_timer = another_service||(language==1'b0)||(language==1'b1)||(operation==2'b00)||(operation==2'b01)||(operation==2'b10);
+
+assign card_in = card_in_reg;
 
 endmodule
