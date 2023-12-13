@@ -44,7 +44,7 @@ begin
             end
             if ((!card_in)|| op_done)
             begin
-                balance_reg[card_number] <= updated_balance;
+                balance_reg[card_number] = updated_balance;
                 $writememb("./Database/balance_memory.txt",balance_reg,0,users_num-1);
             end
         end
