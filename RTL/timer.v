@@ -35,6 +35,7 @@ always @(posedge clk or negedge rst)
         else
         begin
             counter <= 1'b0;
+            timeout <= 1'b0;
         end
     end
 endmodule 

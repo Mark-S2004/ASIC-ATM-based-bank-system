@@ -17,7 +17,7 @@ module ATM_FSM #(parameter  balance_width = 20 )
     output reg op_done,
     output reg error, 
     output reg start_timer, 
-    output wire restart_timer 
+    output reg restart_timer 
 );
 
 localparam  idle = 4'b0000 ,
@@ -41,9 +41,13 @@ begin
     if(!rst)
     begin
         balance <= 'b0 ;
+        error_reg <= 2'b0 ;
+        current_state <= idle ;
     end
     else
     begin
+        error_reg <= error_count ;
+        current_state <= next_state ;
         if(card_in)
         begin
             balance <= current_balance ;
@@ -55,30 +59,6 @@ begin
     end   
 end
 
-always @(posedge clk or negedge rst) 
-begin
-    if(!rst)
-    begin
-        error_reg <= 2'b0 ;
-    end
-    else
-    begin
-        error_reg <= error_count ;
-    end
-end
-
-always @ (posedge clk or negedge rst)
-begin
-    if(!rst)
-    begin
-        current_state <= idle ;
-    end
-    else
-    begin
-        current_state <= next_state ;
-    end
-end
-
 always @ (*)
 begin
     error_count = error_reg;
@@ -88,6 +68,7 @@ begin
         if(card_in)
         begin
             next_state = lang ;
+            restart_timer = 1;
         end
         else
         begin
@@ -105,6 +86,7 @@ begin
             if(language == 1'b0 || language == 1'b1)
             begin
                 next_state = psw ;
+                restart_timer = 1;
             end
             else
             begin
@@ -136,6 +118,7 @@ begin
         begin
             error_count = 2'b0;
             next_state = op ;
+            restart_timer = 1;
         end
     end
 
@@ -149,14 +132,17 @@ begin
             if(operation == 2'b00)
             begin
                 next_state = withdraw ;
+                restart_timer = 1;
             end
             else if(operation == 2'b01)
             begin
                 next_state = deposit ;
+                restart_timer = 1;
             end
             else if(operation == 2'b10)
             begin
                 next_state = inquiry ;
+                restart_timer = 1;
             end
             else
             begin
@@ -174,6 +160,7 @@ begin
         if(op_done)
         begin    
             next_state = another_service_state ;
+            restart_timer = 1;
         end
         else
         begin
@@ -186,6 +173,7 @@ begin
             begin
                 error_count = error_reg + 1'b1 ;
                 next_state = withdraw ;
+                restart_timer = 1;
             end
         end
 
@@ -200,6 +188,7 @@ begin
         if(op_done)
         begin
             next_state = another_service_state ;
+            restart_timer = 1;
         end 
         else 
         begin
@@ -212,6 +201,7 @@ begin
             begin
                 error_count = error_reg + 1'b1 ;
                 next_state = deposit ;
+                restart_timer = 1;
             end
         end
 
@@ -225,6 +215,7 @@ begin
         else
         begin
             next_state = another_service_state ;
+            restart_timer = 1;
         end
     end
 
@@ -236,6 +227,7 @@ begin
         if(another_service)
         begin
             next_state = op ;
+            restart_timer = 1;
         end 
         else
         begin
@@ -263,6 +255,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
+        restart_timer = 0 ;
         if(language)
         begin
             $display("Arabic");
@@ -286,7 +279,7 @@ begin
         op_done = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
-        
+        restart_timer = 0 ;
 
         if(wrong_psw || timeout)
         begin
@@ -305,6 +298,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
+        restart_timer = 0 ;
 
         if(timeout) 
         begin
@@ -319,6 +313,7 @@ begin
     withdraw : begin
         op_done = 1'b0 ;
         start_timer = 1'b1 ;
+        restart_timer = 0 ;
         if(!op_done) 
         begin
             if(value > current_balance)
@@ -354,6 +349,7 @@ begin
     deposit : begin
         op_done = 1'b0 ;
         start_timer = 1'b1 ;
+        restart_timer = 0 ;
         if(!op_done) 
         begin
                 error = 1'b0 ;
@@ -382,6 +378,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
+        restart_timer = 0 ;
         if(!op_done) 
         begin
                 error = 1'b0 ;
@@ -410,6 +407,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
+        restart_timer = 0 ;
 
         if(timeout) 
         begin
@@ -422,8 +420,6 @@ begin
     end
     endcase
 end
-
-assign restart_timer = another_service||(language==1'b0)||(language==1'b1)||(operation==2'b00)||(operation==2'b01)||(operation==2'b10);
 
 assign card_in = card_in_reg;
 
