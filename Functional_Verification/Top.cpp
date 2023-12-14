@@ -52,17 +52,17 @@ void balanceCheck(int balance) {
     cout << "Current balance: " << balance << endl;
 }
 
-void performOperation(int id,int pswd,int language, unsigned short operation, int balance, int depositValue, int withdrawValue, bool anotherService) {
+void performOperation(int id,int pswd,int language, unsigned short operation, int depositValue, int withdrawValue, bool anotherService) {
     if (checker(id,pswd)== true){
         switch (operation){
             case Deposit:
-                deposit(balance,depositValue);
+                deposit(balance[id - 1],depositValue);
                 break;
             case Withdraw:
-                withdraw(balance,withdrawValue);
+                withdraw(balance[id - 1],withdrawValue);
                 break;    
             case BalanceCheck:
-                balanceCheck(balance);
+                balanceCheck(balance[id - 1]);
                 break;   
             default:
                 cout << "Please Enter a vaild operation.";
@@ -73,17 +73,16 @@ void performOperation(int id,int pswd,int language, unsigned short operation, in
 }
 
 int main() {
-    int cardNumber = 1;
-    int password = 11;
+    int cardNumber = 2;
+    int password = 22;
     int language = 1;
     unsigned short operation = Deposit;
-    int balance = 1000;
     int depositValue = 500;
     int withdrawValue = 200;
     bool anotherService = false;
 
 
 
-    performOperation(cardNumber,password,language, operation, balance, depositValue, withdrawValue, anotherService);
+    performOperation(cardNumber,password,language, operation, depositValue, withdrawValue, anotherService);
 
 }
