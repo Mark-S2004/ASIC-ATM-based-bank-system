@@ -30,7 +30,7 @@ localparam  idle = 4'b0000 ,
             inquiry = 4'b0111 ,
             another_service_state = 4'b1000 ;
 
-reg [3:0] current_state, next_state ;
+reg [3:0] current_state, next_state = idle ;
 reg [balance_width-1:0] balance_reg ;
 reg [1:0] error_count = 'b0 ;
 reg [1:0] error_reg ;
@@ -226,11 +226,13 @@ begin
         end
         if(another_service)
         begin
+            op_done = 1'b0 ;
             next_state = op ;
             restart_timer = 1;
         end 
         else
         begin
+            card_in_reg = 0;
             next_state = idle ;
         end
     end
@@ -243,6 +245,8 @@ begin
 
     case (current_state)
     idle : begin
+        $display("idle");
+        $display("%b %b", card_in, card_in_reg);
         op_done = 1'b0 ;
         error = 1'b0 ;
         balance_reg = balance ;
@@ -258,11 +262,11 @@ begin
         restart_timer = 0 ;
         if(language)
         begin
-            $display("Arabic");
+            //$display("Arabic");
         end
         else
         begin
-            $display("English");
+            //$display("English");
         end
 
         if(timeout) 
@@ -314,27 +318,19 @@ begin
         op_done = 1'b0 ;
         start_timer = 1'b1 ;
         restart_timer = 0 ;
-        if(!op_done) 
+        if(value > current_balance)
         begin
-            if(value > current_balance)
-            begin
-                error = 1'b1 ;
-                balance_reg = balance ;
-                op_done = 1'b0 ;
-            end
-            else
-            begin
-                error = 1'b0 ;
-                balance_reg = balance - value ;
-                op_done = 1'b1 ;
-            end
+            error = 1'b1 ;
+            balance_reg = balance ;
+            op_done = 1'b0 ;
         end
         else
         begin
             error = 1'b0 ;
-            balance_reg = balance ;
+            $display("with");
+            balance_reg = balance - value ;
             op_done = 1'b1 ;
-        end 
+        end
 
         if(timeout) 
         begin
@@ -403,7 +399,8 @@ begin
         end  
     end
     another_service_state : begin
-        op_done = 1'b0 ;
+        $display("another_service");
+        op_done = 1;
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b1 ;
