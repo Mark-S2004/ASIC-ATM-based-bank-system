@@ -9,11 +9,10 @@ module ATM_FSM #(parameter  balance_width = 20 )
     input wire [1:0] operation,  // withdraw(2'b00), deposit(2'b01), balance(2'b10)
     input wire [balance_width-1:0] value,
     input wire another_service,
-
-
-    inout card_in,
+    input wire card_in,
 
     output reg [balance_width-1:0] balance,
+    output reg card_out,
     output reg op_done,
     output reg error, 
     output reg start_timer, 
@@ -34,7 +33,6 @@ reg [3:0] current_state, next_state = idle ;
 reg [balance_width-1:0] balance_reg ;
 reg [1:0] error_count = 'b0 ;
 reg [1:0] error_reg ;
-reg card_in_reg;
 
 always @(posedge clk or negedge rst) 
 begin
@@ -65,7 +63,7 @@ begin
 
     case (current_state)
     idle : begin
-        if(card_in)
+        if(psw_en)
         begin
             next_state = lang ;
             restart_timer = 1;
@@ -251,7 +249,7 @@ begin
         error = 1'b0 ;
         balance_reg = balance ;
         start_timer = 1'b0 ;
-        card_in_reg = 1'b1 ;
+        card_out = 1'b0 ;
     end
 
     lang : begin
@@ -271,11 +269,11 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
 
@@ -287,12 +285,12 @@ begin
 
         if(wrong_psw || timeout)
         begin
-            card_in_reg=1'b0;
+            card_out=1'b1;
             error=1'b1;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
             error = 1'b0;
         end
     end
@@ -306,11 +304,11 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
 
@@ -334,11 +332,11 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
 
@@ -361,11 +359,11 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end   
     end
 
@@ -391,11 +389,11 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
     another_service_state : begin
@@ -408,16 +406,13 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
     endcase
 end
-
-assign card_in = card_in_reg;
-
 endmodule
