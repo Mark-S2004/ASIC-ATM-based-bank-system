@@ -22,10 +22,11 @@ reg [balance_width-1:0] balance_reg  [0:users_num-1] ;
 
 always @(posedge clk or negedge rst)
 begin
+     $readmemb("./Database/password_memory.txt", password_reg);
+     $readmemb("./Database/balance_memory.txt" , balance_reg);
     if (!rst)
     begin
-        $readmemb("./Database/password_memory.txt", password_reg);
-        $readmemb("./Database/balance_memory.txt" , balance_reg);
+        
 
         balance <= 1'b0;
         wrong_psw <= 1'b0;
