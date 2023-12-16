@@ -30,7 +30,6 @@ module ATM_Top #(parameter  password_width = 4,
 
 //wire  [balance_width-1:0] updated_balance; //output from ATM_FSM to card_handling
 wire  [balance_width-1:0] balance;//from card_handling to ATM_FSM
-wire  psw_en;//from card_handling to ATM_FSM
 
 //timer inputs 
 wire timeout ; //flag to ATM_FSM that time out the card will be executed (go to idle)
