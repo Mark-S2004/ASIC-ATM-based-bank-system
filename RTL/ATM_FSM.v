@@ -251,11 +251,11 @@ begin
         restart_timer = 0 ;
         if(language)
         begin
-            $display("Arabic");
+            //$display("Arabic");
         end
         else
         begin
-            $display("English");
+            //$display("English");
         end
 
         if(timeout) 
@@ -369,7 +369,7 @@ begin
         begin
                 error = 1'b0 ;
                 balance_reg = balance ;
-                $display("%d",balance);
+                //$display("%d",balance);
                 op_done = 1'b1 ;
         end
         else
