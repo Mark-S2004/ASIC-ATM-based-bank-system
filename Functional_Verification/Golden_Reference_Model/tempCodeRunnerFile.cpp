@@ -1,1 +1,0 @@
-nt balance = 1000;
