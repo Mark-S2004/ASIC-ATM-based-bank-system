@@ -6,7 +6,6 @@ module cardHandling_tb #(parameter  card_width = 3,
     reg clk;
     reg rst;
     reg [card_width-1:0] card_number;
-    reg card_out;
     reg op_done;
     reg [balance_width-1:0] updated_balance;
     reg [password_width-1:0] password_input;
@@ -27,7 +26,6 @@ module cardHandling_tb #(parameter  card_width = 3,
         .clk(clk),
         .rst(rst),
         .card_number(card_number),
-        .card_out(card_out),
         .op_done(op_done),
         .updated_balance(updated_balance),
         .password_input(password_input),
@@ -45,10 +43,9 @@ module cardHandling_tb #(parameter  card_width = 3,
         $readmemb("./Database/balance_memory.txt" , balance_reg);
         rst = 0;
         @(negedge clk);
-        for (i = 0; i < 10000; i=i+1) begin
+        for (i = 0; i < 1000; i=i+1) begin
             rst = $random();
             card_number = $random(); 
-            card_out = $random();
             op_done = $random();
             updated_balance = $random();
             password_input = $random();

@@ -41,7 +41,6 @@ cardhandling U0_card_handling (
     .clk(clk),
     .rst(rst),
     .card_number(card_number),
-    .card_out(card_out),
     .op_done(op_done),
 	.updated_balance(updated_balance),
     .password_input(password_input),
