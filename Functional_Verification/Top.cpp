@@ -34,55 +34,77 @@ bool checker(int enteredCard, int enteredPassword) {
 
 }
 
-void deposit(int& balance, int depositValue) {
+int deposit(int& balance, int depositValue) {
     balance += depositValue;
     cout << "Deposit of " << depositValue << " completed. Updated balance: " << balance << endl;
+    return balance;
 }
 
-void withdraw(int& balance, int withdrawValue) {
+int withdraw(int& balance, int withdrawValue) {
     if (withdrawValue <= balance) {
         balance -= withdrawValue;
         cout << "Withdrawal of " << withdrawValue << " completed. Updated balance: " << balance << endl;
     } else {
         cout << "Insufficient funds. Withdrawal cannot be completed." << endl;
     }
+    return balance;
 }
 
-void balanceCheck(int balance) {
+int balanceCheck(int balance) {
     cout << "Current balance: " << balance << endl;
+    return balance;
+}
+// 1305QA
+
+int performOperation(int rst, int card_in, int id, int pswd, int language, unsigned short operation, int depositValue, int withdrawValue, bool anotherService) {
+    if (rst == 1 && card_in) {
+        if (checker(id, pswd) == true) {
+            switch (operation) {
+                case Deposit:
+                    deposit(balance[id - 1], depositValue);
+                    break;
+                case Withdraw:
+                    withdraw(balance[id - 1], withdrawValue);
+                    break;
+                case BalanceCheck:
+                    balanceCheck(balance[id - 1]);
+                    break;
+                default:
+                    cout << "Please enter a valid operation." << endl;
+                    break;
+            }
+            if (anotherService) {
+                cout << "Select another service: 0-Deposit - 1-Withdraw - 2-BalanceCheck: ";
+                cin >> operation;
+                performOperation(rst, card_in, id, pswd, language, operation, depositValue, withdrawValue, false);
+            }
+        }
+    } else if (rst == 0) {
+        cout << "Done Reset " << endl;
+        cout << "Balance: $0.00" << endl;
+    } else if (!card_in) {
+        cout << "There is no card in ATM " << endl;
+    }
+
+    return balance[id - 1];
+ 
 }
 
-void performOperation(int id,int pswd,int language, unsigned short operation, int depositValue, int withdrawValue, bool anotherService) {
-    if (checker(id,pswd)== true){
-        switch (operation){
-            case Deposit:
-                deposit(balance[id - 1],depositValue);
-                break;
-            case Withdraw:
-                withdraw(balance[id - 1],withdrawValue);
-                break;    
-            case BalanceCheck:
-                balanceCheck(balance[id - 1]);
-                break;   
-            default:
-                cout << "Please Enter a vaild operation.";
-                break;
-            }
-    }
-    
-}
 
 int main() {
+    int rst = 1;
+    int card_in = 1;
     int cardNumber = 2;
     int password = 22;
     int language = 1;
     unsigned short operation = Deposit;
     int depositValue = 500;
     int withdrawValue = 200;
-    bool anotherService = false;
+    bool anotherService = true;
 
 
 
-    performOperation(cardNumber,password,language, operation, depositValue, withdrawValue, anotherService);
+    performOperation(rst,card_in,cardNumber,password,language, operation, depositValue, withdrawValue, anotherService);
+    cout << "Thank you for using our services. Goodbye!" << endl;
 
 }
