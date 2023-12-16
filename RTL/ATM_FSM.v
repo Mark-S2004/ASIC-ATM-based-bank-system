@@ -10,10 +10,8 @@ module ATM_FSM #(parameter  balance_width = 20 )
     input wire [balance_width-1:0] value,
     input wire another_service,
 
-
-    inout card_in,
-
     output reg [balance_width-1:0] balance,
+    output reg card_out = 0,
     output reg op_done,
     output reg error, 
     output reg start_timer, 
@@ -30,17 +28,18 @@ localparam  idle = 4'b0000 ,
             inquiry = 4'b0111 ,
             another_service_state = 4'b1000 ;
 
-reg [3:0] current_state, next_state ;
+reg [3:0] current_state, next_state = idle ;
 reg [balance_width-1:0] balance_reg ;
 reg [1:0] error_count = 'b0 ;
 reg [1:0] error_reg ;
-reg card_in_reg;
 
 always @(posedge clk or negedge rst) 
 begin
     if(!rst)
     begin
         balance <= 'b0 ;
+        error <= 0;
+        op_done <= 0;
         error_reg <= 2'b0 ;
         current_state <= idle ;
     end
@@ -48,14 +47,10 @@ begin
     begin
         error_reg <= error_count ;
         current_state <= next_state ;
-        if(card_in)
-        begin
-            balance <= current_balance ;
-        end
+        if (!card_out)
+            balance <= current_balance;
         else
-        begin
-            balance <= balance_reg ;
-        end
+            balance <= balance_reg;
     end   
 end
 
@@ -65,14 +60,14 @@ begin
 
     case (current_state)
     idle : begin
-        if(card_in)
+        if(op_done && !another_service)
         begin
-            next_state = lang ;
-            restart_timer = 1;
+            next_state = idle ;
         end
         else
         begin
-            next_state = idle ;
+            next_state = lang ;
+            restart_timer = 1;
         end
     end
 
@@ -157,8 +152,8 @@ begin
         begin
             next_state = idle ;
         end
-        if(op_done)
-        begin    
+        if(op_done && !error)
+        begin   
             next_state = another_service_state ;
             restart_timer = 1;
         end
@@ -243,11 +238,9 @@ begin
 
     case (current_state)
     idle : begin
-        op_done = 1'b0 ;
-        error = 1'b0 ;
         balance_reg = balance ;
+        card_out = 1;
         start_timer = 1'b0 ;
-        card_in_reg = 1'b1 ;
     end
 
     lang : begin
@@ -258,20 +251,20 @@ begin
         restart_timer = 0 ;
         if(language)
         begin
-            $display("Arabic");
+            //$display("Arabic");
         end
         else
         begin
-            $display("English");
+            //$display("English");
         end
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
 
@@ -283,12 +276,12 @@ begin
 
         if(wrong_psw || timeout)
         begin
-            card_in_reg=1'b0;
+            card_out=1'b1;
             error=1'b1;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
             error = 1'b0;
         end
     end
@@ -302,47 +295,40 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
 
     withdraw : begin
-        op_done = 1'b0 ;
         start_timer = 1'b1 ;
         restart_timer = 0 ;
-        if(!op_done) 
+        if(value > current_balance)
         begin
-            if(value > current_balance)
-            begin
-                error = 1'b1 ;
-                balance_reg = balance ;
-                op_done = 1'b0 ;
-            end
+            error = 1'b1 ;
+            balance_reg = balance ;
+            if (error_reg == 2'b10)
+                op_done = 1;
             else
-            begin
-                error = 1'b0 ;
-                balance_reg = balance - value ;
-                op_done = 1'b1 ;
-            end
+                op_done = 0;
         end
         else
         begin
             error = 1'b0 ;
-            balance_reg = balance ;
+            balance_reg = balance - value ;
             op_done = 1'b1 ;
-        end 
+        end
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
 
@@ -365,11 +351,11 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end   
     end
 
@@ -383,7 +369,7 @@ begin
         begin
                 error = 1'b0 ;
                 balance_reg = balance ;
-                $display("%d",balance);
+                //$display("%d",balance);
                 op_done = 1'b1 ;
         end
         else
@@ -395,32 +381,30 @@ begin
 
         if(timeout) 
         begin
-            card_in_reg = 1'b0 ;
+            card_out = 1'b1 ;
         end
         else
         begin
-            card_in_reg = 1'b1 ;
+            card_out = 1'b0 ;
         end  
     end
     another_service_state : begin
-        op_done = 1'b0 ;
+        op_done = 1;
         error = 1'b0 ;
-        balance_reg = balance ;
+        balance = balance_reg ;
         start_timer = 1'b1 ;
         restart_timer = 0 ;
 
-        if(timeout) 
+        if(another_service && !timeout)
         begin
-            card_in_reg = 1'b0 ;
-        end
+            card_out = 0;
+            if (another_service) op_done = 1'b0 ;
+        end 
         else
         begin
-            card_in_reg = 1'b1 ;
-        end  
+            card_out = 1;
+        end
     end
     endcase
 end
-
-assign card_in = card_in_reg;
-
 endmodule

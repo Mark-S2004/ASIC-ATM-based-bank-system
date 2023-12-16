@@ -12,8 +12,6 @@ module ATM_Top #(parameter  password_width = 4,
 	//cardhandling inputs
 	input wire [card_width-1:0] card_number,
     input wire [password_width-1:0] password_input,
-//inout port
-	inout card_in,    
 
 	//ATM_FSM inputs 
     input wire language,
@@ -21,6 +19,7 @@ module ATM_Top #(parameter  password_width = 4,
     input wire [balance_width-1:0] value,
     input wire another_service,	
 	//output from ATM_FSM
+	output reg card_out,    
 	output wire [balance_width-1:0] updated_balance, //output from ATM_FSM and also transmitted to card_handling to update user data
 	output wire op_done, 
 	output wire error,
@@ -30,7 +29,6 @@ module ATM_Top #(parameter  password_width = 4,
 
 //wire  [balance_width-1:0] updated_balance; //output from ATM_FSM to card_handling
 wire  [balance_width-1:0] balance;//from card_handling to ATM_FSM
-wire  psw_en;//from card_handling to ATM_FSM
 
 //timer inputs 
 wire timeout ; //flag to ATM_FSM that time out the card will be executed (go to idle)
@@ -43,7 +41,6 @@ cardhandling U0_card_handling (
     .clk(clk),
     .rst(rst),
     .card_number(card_number),
-    .card_in(card_in),
     .op_done(op_done),
 	.updated_balance(updated_balance),
     .password_input(password_input),
@@ -72,7 +69,7 @@ ATM_FSM U0_ATM_FSM (
     .another_service(another_service),
 
     .balance(updated_balance),
-	.card_in(card_in),
+	.card_out(card_out),
 	.op_done(op_done),
     .error(error),
     .start_timer(start_timer),
