@@ -25418,3 +25418,613 @@ do cardHandling_run.do
 # ** Note: $stop    : ./Functional_Verification/cardHandling_tb.sv(58)
 #    Time: 20002 ns  Iteration: 1  Instance: /cardHandling_tb
 # Break in Module cardHandling_tb at ./Functional_Verification/cardHandling_tb.sv line 58
+do cardHandling_run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 21:39:44 on Dec 16,2023
+# vlog -reportprogress 300 -sv ./Functional_Verification/cardHandling_tb.sv ./RTL/cardhandling.v "+cover" 
+# -- Compiling module cardHandling_tb
+# -- Compiling module cardhandling
+# 
+# Top level modules:
+# 	cardHandling_tb
+# End time: 21:39:44 on Dec 16,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Saving coverage database on exit...
+# End time: 21:39:49 on Dec 16,2023, Elapsed time: 0:04:19
+# Errors: 1992, Warnings: 0
+# vsim -voptargs="+acc" work.cardHandling_tb -coverage 
+# Start time: 21:39:49 on Dec 16,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.cardHandling_tb(fast)
+# Loading work.cardhandling(fast)
+# ** Error: Assertion failed
+#    Time: 15 ns Started: 13 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 19 ns Started: 17 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 35 ns Started: 33 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 37 ns Started: 35 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 47 ns Started: 45 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 63 ns Started: 61 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 75 ns Started: 73 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 81 ns Started: 79 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 89 ns Started: 87 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 101 ns Started: 99 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 125 ns Started: 123 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 129 ns Started: 127 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 145 ns Started: 143 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 149 ns Started: 147 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 151 ns Started: 149 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 167 ns Started: 165 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 169 ns Started: 167 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 187 ns Started: 185 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 199 ns Started: 197 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 207 ns Started: 205 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 213 ns Started: 211 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 215 ns Started: 213 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 225 ns Started: 223 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 231 ns Started: 229 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 235 ns Started: 233 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 243 ns Started: 241 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 273 ns Started: 271 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 295 ns Started: 293 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 323 ns Started: 321 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 329 ns Started: 327 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 347 ns Started: 345 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 351 ns Started: 349 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 361 ns Started: 359 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 367 ns Started: 365 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 387 ns Started: 385 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 389 ns Started: 387 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 395 ns Started: 393 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 397 ns Started: 395 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 407 ns Started: 405 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 409 ns Started: 407 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 419 ns Started: 417 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 425 ns Started: 423 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 433 ns Started: 431 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 439 ns Started: 437 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 443 ns Started: 441 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 447 ns Started: 445 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 449 ns Started: 447 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 457 ns Started: 455 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 459 ns Started: 457 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 477 ns Started: 475 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 479 ns Started: 477 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 487 ns Started: 485 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 489 ns Started: 487 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 495 ns Started: 493 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 497 ns Started: 495 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 503 ns Started: 501 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 507 ns Started: 505 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 519 ns Started: 517 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 521 ns Started: 519 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 523 ns Started: 521 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 545 ns Started: 543 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 555 ns Started: 553 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 561 ns Started: 559 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 571 ns Started: 569 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 589 ns Started: 587 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 593 ns Started: 591 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 601 ns Started: 599 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 603 ns Started: 601 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 607 ns Started: 605 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 615 ns Started: 613 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 619 ns Started: 617 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 623 ns Started: 621 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 629 ns Started: 627 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 631 ns Started: 629 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 641 ns Started: 639 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 651 ns Started: 649 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 661 ns Started: 659 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 683 ns Started: 681 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 693 ns Started: 691 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 703 ns Started: 701 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 711 ns Started: 709 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 713 ns Started: 711 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 715 ns Started: 713 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 737 ns Started: 735 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 739 ns Started: 737 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 745 ns Started: 743 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 755 ns Started: 753 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 757 ns Started: 755 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 763 ns Started: 761 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 821 ns Started: 819 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 831 ns Started: 829 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 869 ns Started: 867 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 877 ns Started: 875 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 887 ns Started: 885 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 893 ns Started: 891 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 899 ns Started: 897 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 905 ns Started: 903 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 907 ns Started: 905 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 913 ns Started: 911 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 919 ns Started: 917 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 935 ns Started: 933 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 941 ns Started: 939 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 949 ns Started: 947 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 965 ns Started: 963 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 971 ns Started: 969 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 973 ns Started: 971 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 975 ns Started: 973 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 993 ns Started: 991 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1019 ns Started: 1017 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1027 ns Started: 1025 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1029 ns Started: 1027 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1041 ns Started: 1039 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1051 ns Started: 1049 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1061 ns Started: 1059 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1097 ns Started: 1095 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1129 ns Started: 1127 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1135 ns Started: 1133 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1143 ns Started: 1141 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1155 ns Started: 1153 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1197 ns Started: 1195 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1201 ns Started: 1199 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1239 ns Started: 1237 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1241 ns Started: 1239 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1247 ns Started: 1245 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1265 ns Started: 1263 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1271 ns Started: 1269 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1285 ns Started: 1283 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1325 ns Started: 1323 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1331 ns Started: 1329 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1335 ns Started: 1333 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1345 ns Started: 1343 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1347 ns Started: 1345 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1355 ns Started: 1353 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1357 ns Started: 1355 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1369 ns Started: 1367 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1383 ns Started: 1381 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1395 ns Started: 1393 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1397 ns Started: 1395 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1405 ns Started: 1403 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1419 ns Started: 1417 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1427 ns Started: 1425 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1445 ns Started: 1443 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1447 ns Started: 1445 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1449 ns Started: 1447 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1453 ns Started: 1451 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1459 ns Started: 1457 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1461 ns Started: 1459 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1469 ns Started: 1467 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1483 ns Started: 1481 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1493 ns Started: 1491 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1503 ns Started: 1501 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1507 ns Started: 1505 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1525 ns Started: 1523 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1531 ns Started: 1529 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1549 ns Started: 1547 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1555 ns Started: 1553 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1561 ns Started: 1559 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1575 ns Started: 1573 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1585 ns Started: 1583 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1591 ns Started: 1589 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1595 ns Started: 1593 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1597 ns Started: 1595 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1603 ns Started: 1601 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1619 ns Started: 1617 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1621 ns Started: 1619 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1625 ns Started: 1623 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1633 ns Started: 1631 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1689 ns Started: 1687 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1703 ns Started: 1701 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1729 ns Started: 1727 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1739 ns Started: 1737 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1741 ns Started: 1739 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1743 ns Started: 1741 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1745 ns Started: 1743 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1749 ns Started: 1747 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1753 ns Started: 1751 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1771 ns Started: 1769 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1777 ns Started: 1775 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1789 ns Started: 1787 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1791 ns Started: 1789 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1795 ns Started: 1793 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1811 ns Started: 1809 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1823 ns Started: 1821 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1841 ns Started: 1839 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1851 ns Started: 1849 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1873 ns Started: 1871 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1879 ns Started: 1877 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1903 ns Started: 1901 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1905 ns Started: 1903 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1925 ns Started: 1923 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1935 ns Started: 1933 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1937 ns Started: 1935 ns  Scope: /cardHandling_tb/updated_balance_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 61
+# ** Error: Assertion failed
+#    Time: 1961 ns Started: 1959 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Error: Assertion failed
+#    Time: 1987 ns Started: 1985 ns  Scope: /cardHandling_tb/incorrect_psw_assertion File: ./Functional_Verification/cardHandling_tb.sv Line: 60
+# ** Note: $stop    : ./Functional_Verification/cardHandling_tb.sv(55)
+#    Time: 2002 ns  Iteration: 1  Instance: /cardHandling_tb
+# Break in Module cardHandling_tb at ./Functional_Verification/cardHandling_tb.sv line 55
+do ATM_Top_run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 21:45:39 on Dec 16,2023
+# vlog -reportprogress 300 -sv ./Functional_Verification/ATM_Top_tb.sv ./RTL/ATM_Top.v "+cover" 
+# -- Compiling module ATM_Top_tb
+# -- Compiling module ATM_FSM
+# -- Compiling module cardhandling
+# -- Compiling module timer
+# -- Compiling module ATM_Top
+# 
+# Top level modules:
+# 	ATM_Top_tb
+# End time: 21:45:39 on Dec 16,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Saving coverage database on exit...
+# End time: 21:45:41 on Dec 16,2023, Elapsed time: 0:05:52
+# Errors: 194, Warnings: 0
+# vsim -voptargs="+acc" work.ATM_Top_tb -coverage 
+# Start time: 21:45:41 on Dec 16,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.ATM_Top_tb(fast)
+# Loading work.ATM_Top(fast)
+# Loading work.cardhandling(fast)
+# Loading work.timer(fast)
+# Loading work.ATM_FSM(fast)
+# Timeout Check: Success
+# updated_balance:       0, prev_balance:  669422, card_out: 1, op_done: 0, wrong_psw: 0, error: 0
+# withdraw Check: Success
+# ** Note: $stop    : ./Functional_Verification/ATM_Top_tb.sv(73)
+#    Time: 32066 ns  Iteration: 1  Instance: /ATM_Top_tb
+# Break in Module ATM_Top_tb at ./Functional_Verification/ATM_Top_tb.sv line 73
+do ATM_Top_run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 21:47:32 on Dec 16,2023
+# vlog -reportprogress 300 -sv ./Functional_Verification/ATM_Top_tb.sv ./RTL/ATM_Top.v "+cover" 
+# -- Compiling module ATM_Top_tb
+# -- Compiling module ATM_FSM
+# -- Compiling module cardhandling
+# -- Compiling module timer
+# -- Compiling module ATM_Top
+# 
+# Top level modules:
+# 	ATM_Top_tb
+# End time: 21:47:32 on Dec 16,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Saving coverage database on exit...
+# End time: 21:47:38 on Dec 16,2023, Elapsed time: 0:01:57
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.ATM_Top_tb -coverage 
+# Start time: 21:47:38 on Dec 16,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.ATM_Top_tb(fast)
+# Loading work.ATM_Top(fast)
+# Loading work.cardhandling(fast)
+# Loading work.timer(fast)
+# Loading work.ATM_FSM(fast)
+# Timeout Check: Success
+# updated_balance:       0, prev_balance:  601293, card_out: 1, op_done: 0, wrong_psw: 0, error: 0
+# withdraw Check: Success
+# ** Note: $stop    : ./Functional_Verification/ATM_Top_tb.sv(73)
+#    Time: 32066 ns  Iteration: 1  Instance: /ATM_Top_tb
+# Break in Module ATM_Top_tb at ./Functional_Verification/ATM_Top_tb.sv line 73
+do ATM_Top_run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 21:48:15 on Dec 16,2023
+# vlog -reportprogress 300 -sv ./Functional_Verification/ATM_Top_tb.sv ./RTL/ATM_Top.v "+cover" 
+# -- Compiling module ATM_Top_tb
+# -- Compiling module ATM_FSM
+# -- Compiling module cardhandling
+# -- Compiling module timer
+# -- Compiling module ATM_Top
+# 
+# Top level modules:
+# 	ATM_Top_tb
+# End time: 21:48:15 on Dec 16,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Saving coverage database on exit...
+# End time: 21:48:24 on Dec 16,2023, Elapsed time: 0:00:46
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.ATM_Top_tb -coverage 
+# Start time: 21:48:24 on Dec 16,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.ATM_Top_tb(fast)
+# Loading work.ATM_Top(fast)
+# Loading work.cardhandling(fast)
+# Loading work.timer(fast)
+# Loading work.ATM_FSM(fast)
+# Timeout Check: Success
+# updated_balance:       0, prev_balance:  533164, card_out: 1, op_done: 0, wrong_psw: 0, error: 0
+# withdraw Check: Success
+# ** Note: $stop    : ./Functional_Verification/ATM_Top_tb.sv(73)
+#    Time: 32066 ns  Iteration: 1  Instance: /ATM_Top_tb
+# Break in Module ATM_Top_tb at ./Functional_Verification/ATM_Top_tb.sv line 73
+do ATM_Top_run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 21:51:19 on Dec 16,2023
+# vlog -reportprogress 300 -sv ./Functional_Verification/ATM_Top_tb.sv ./RTL/ATM_Top.v "+cover" 
+# -- Compiling module ATM_Top_tb
+# -- Compiling module ATM_FSM
+# -- Compiling module cardhandling
+# -- Compiling module timer
+# -- Compiling module ATM_Top
+# 
+# Top level modules:
+# 	ATM_Top_tb
+# End time: 21:51:19 on Dec 16,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Saving coverage database on exit...
+# End time: 21:51:26 on Dec 16,2023, Elapsed time: 0:03:02
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.ATM_Top_tb -coverage 
+# Start time: 21:51:26 on Dec 16,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.ATM_Top_tb(fast)
+# Loading work.ATM_Top(fast)
+# Loading work.cardhandling(fast)
+# Loading work.timer(fast)
+# Loading work.ATM_FSM(fast)
+# Timeout Check: Success
+# updated_balance:       0, prev_balance:  465035, card_out: 1, op_done: 0, wrong_psw: 0, error: 0
+# withdraw Check: Success
+# ** Note: $stop    : ./Functional_Verification/ATM_Top_tb.sv(73)
+#    Time: 32066 ns  Iteration: 1  Instance: /ATM_Top_tb
+# Break in Module ATM_Top_tb at ./Functional_Verification/ATM_Top_tb.sv line 73
+do ATM_Top_run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 21:52:59 on Dec 16,2023
+# vlog -reportprogress 300 -sv ./Functional_Verification/ATM_Top_tb.sv ./RTL/ATM_Top.v "+cover" 
+# -- Compiling module ATM_Top_tb
+# -- Compiling module ATM_FSM
+# -- Compiling module cardhandling
+# -- Compiling module timer
+# -- Compiling module ATM_Top
+# 
+# Top level modules:
+# 	ATM_Top_tb
+# End time: 21:52:59 on Dec 16,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Saving coverage database on exit...
+# End time: 21:53:04 on Dec 16,2023, Elapsed time: 0:01:38
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.ATM_Top_tb -coverage 
+# Start time: 21:53:04 on Dec 16,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.ATM_Top_tb(fast)
+# Loading work.ATM_Top(fast)
+# Loading work.cardhandling(fast)
+# Loading work.timer(fast)
+# Loading work.ATM_FSM(fast)
+# Timeout Check: Success
+# updated_balance:       0, prev_balance:  396906, card_out: 1, op_done: 0, wrong_psw: 0, error: 0
+# withdraw Check: Success
+# ** Note: $stop    : ./Functional_Verification/ATM_Top_tb.sv(73)
+#    Time: 32066 ns  Iteration: 1  Instance: /ATM_Top_tb
+# Break in Module ATM_Top_tb at ./Functional_Verification/ATM_Top_tb.sv line 73
+do ATM_Top_run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 21:53:43 on Dec 16,2023
+# vlog -reportprogress 300 -sv ./Functional_Verification/ATM_Top_tb.sv ./RTL/ATM_Top.v "+cover" 
+# -- Compiling module ATM_Top_tb
+# -- Compiling module ATM_FSM
+# -- Compiling module cardhandling
+# -- Compiling module timer
+# -- Compiling module ATM_Top
+# 
+# Top level modules:
+# 	ATM_Top_tb
+# End time: 21:53:43 on Dec 16,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Saving coverage database on exit...
+# End time: 21:53:48 on Dec 16,2023, Elapsed time: 0:00:44
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.ATM_Top_tb -coverage 
+# Start time: 21:53:48 on Dec 16,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.ATM_Top_tb(fast)
+# Loading work.ATM_Top(fast)
+# Loading work.cardhandling(fast)
+# Loading work.timer(fast)
+# Loading work.ATM_FSM(fast)
+# Timeout Check: Success
+# updated_balance:       0, prev_balance:  328777, card_out: 1, op_done: 0, wrong_psw: 0, error: 0
+# withdraw Check: Success
+# ** Note: $stop    : ./Functional_Verification/ATM_Top_tb.sv(73)
+#    Time: 32066 ns  Iteration: 1  Instance: /ATM_Top_tb
+# Break in Module ATM_Top_tb at ./Functional_Verification/ATM_Top_tb.sv line 73

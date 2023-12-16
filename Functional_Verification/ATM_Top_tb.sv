@@ -77,9 +77,9 @@ module ATM_Top_tb #(parameter   password_width = 4,
     
     // psl wrong_psw_assertion: assert always( (password_input != password_reg[card_number] && !card_out) -> next (wrong_psw) abort !rst) @(posedge clk);
 
-    // psl withdraw_assertion: assert always ( {(password_input == password_reg[card_number] && !card_out && operation == 2'b00 && value < balance_reg[card_number] && !another_service)[*15]} (updated_balance == balance_reg[card_number] - value && card_out && op_done && !error && !wrong_psw) abort !rst) @(posedge clk);
+    // psl withdraw_assertion: assert always ( (password_input == password_reg[card_number] && !card_out && operation == 2'b00 && value < balance_reg[card_number] && !another_service) -> next[5]  (updated_balance == balance_reg[card_number] - value && card_out && op_done && !error && !wrong_psw) abort !rst) @(posedge clk);
 
-    // psl deposit_assertion: assert always ( {(password_input == password_reg[card_number] && !card_out && operation == 2'b01 && !another_service)[*15]} (updated_balance == balance_reg[card_number] + value && card_out && op_done && !error && !wrong_psw) abort !rst) @(posedge clk);
+    // psl deposit_assertion: assert always ( (password_input == password_reg[card_number] && !card_out && operation == 2'b01 && !another_service) -> next[5]  (updated_balance == balance_reg[card_number] + value && card_out && op_done && !error && !wrong_psw) abort !rst) @(posedge clk);
 
     // psl timeout_assertion: assert always ( {(operation == 2'b11)[*15]} (card_out) abort !rst) @(posedge clk);
     
