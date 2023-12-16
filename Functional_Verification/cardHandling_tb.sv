@@ -6,7 +6,7 @@ module cardHandling_tb #(parameter  card_width = 3,
     reg clk;
     reg rst;
     reg [card_width-1:0] card_number;
-    reg card_in;
+    reg card_out;
     reg op_done;
     reg [balance_width-1:0] updated_balance;
     reg [password_width-1:0] password_input;
@@ -27,7 +27,7 @@ module cardHandling_tb #(parameter  card_width = 3,
         .clk(clk),
         .rst(rst),
         .card_number(card_number),
-        .card_in(card_in),
+        .card_out(card_out),
         .op_done(op_done),
         .updated_balance(updated_balance),
         .password_input(password_input),
@@ -48,7 +48,7 @@ module cardHandling_tb #(parameter  card_width = 3,
         for (i = 0; i < 10000; i=i+1) begin
             rst = $random();
             card_number = $random(); 
-            card_in = $random();
+            card_out = $random();
             op_done = $random();
             updated_balance = $random();
             password_input = $random();
@@ -59,7 +59,7 @@ module cardHandling_tb #(parameter  card_width = 3,
     end
 
     // psl rst_assertion: assert always( (!rst) -> next (!wrong_psw && !balance)) @(posedge clk);
-    // psl correct_psw_assertion: assert always( (card_number < users_num && password_input == password_reg[card_number] && card_in) -> next (!wrong_psw) abort !rst) @(posedge clk);
-    // psl incorrect_psw_assertion: assert always( (card_number < users_num && password_input != password_reg[card_number] && card_in) -> next (wrong_psw) abort !rst) @(posedge clk);
-    // psl updated_balance_assertion: assert always( (card_number < users_num && (op_done || !card_in)) -> next[1] (prev(updated_balance) == balance_reg[card_number]) abort !rst) @(posedge clk);
+    // psl correct_psw_assertion: assert always( (card_number < users_num && password_input == password_reg[card_number] && !card_out) -> next (!wrong_psw) abort !rst) @(posedge clk);
+    // psl incorrect_psw_assertion: assert always( (card_number < users_num && password_input != password_reg[card_number] && !card_out) -> next (wrong_psw) abort !rst) @(posedge clk);
+    // psl updated_balance_assertion: assert always( (card_number < users_num && (op_done || card_out)) -> next[1] (prev(updated_balance) == balance_reg[card_number]) abort !rst) @(posedge clk);
 endmodule
