@@ -1,4 +1,4 @@
-module timer #(parameter threshold = 32'd10)
+module timer #(parameter threshold = 4'd10)
 (
     input wire clk,
     input wire rst,
@@ -7,7 +7,7 @@ module timer #(parameter threshold = 32'd10)
     output reg timeout
 );
 
-reg[31:0] counter;
+reg[3:0] counter;
 
 always @(posedge clk or negedge rst)
     begin 
