@@ -13,7 +13,7 @@ module ATM_Top #(parameter  password_width = 4,
 	input wire [card_width-1:0] card_number,
     input wire [password_width-1:0] password_input,
 //inout port
-	inout card_in,    
+	inout card_out,    
 
 	//ATM_FSM inputs 
     input wire language,
@@ -43,7 +43,7 @@ cardhandling U0_card_handling (
     .clk(clk),
     .rst(rst),
     .card_number(card_number),
-    .card_in(card_in),
+    .card_out(card_out),
     .op_done(op_done),
 	.updated_balance(updated_balance),
     .password_input(password_input),
@@ -72,7 +72,7 @@ ATM_FSM U0_ATM_FSM (
     .another_service(another_service),
 
     .balance(updated_balance),
-	.card_in(card_in),
+	.card_out(card_out),
 	.op_done(op_done),
     .error(error),
     .start_timer(start_timer),
