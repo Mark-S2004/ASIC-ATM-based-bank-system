@@ -36,14 +36,14 @@ begin
         wrong_psw <= 1'b0;
         if(card_number < users_num)
         begin
-            if (!card_out)
+            if (!op_done)
             begin
             
                 balance <= balance_reg[card_number]  ;
                 if(password_input != password_reg[card_number])
                     wrong_psw <= 1'b1;
             end
-            if ((card_out)|| op_done)
+            if (op_done)
             begin
                 balance_reg[card_number] = updated_balance;
                 $writememb("./Database/balance_memory.txt",balance_reg,0,users_num-1);

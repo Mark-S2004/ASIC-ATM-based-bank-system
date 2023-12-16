@@ -12,8 +12,6 @@ module ATM_Top #(parameter  password_width = 4,
 	//cardhandling inputs
 	input wire [card_width-1:0] card_number,
     input wire [password_width-1:0] password_input,
-//inout port
-	inout card_out,    
 
 	//ATM_FSM inputs 
     input wire language,
@@ -21,6 +19,7 @@ module ATM_Top #(parameter  password_width = 4,
     input wire [balance_width-1:0] value,
     input wire another_service,	
 	//output from ATM_FSM
+	output reg card_out,    
 	output wire [balance_width-1:0] updated_balance, //output from ATM_FSM and also transmitted to card_handling to update user data
 	output wire op_done, 
 	output wire error,
