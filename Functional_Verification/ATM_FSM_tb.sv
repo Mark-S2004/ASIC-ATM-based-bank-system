@@ -51,7 +51,7 @@ module ATM_FSM_tb #(parameter balance_width = 20);
         $stop();
     end
 
-    // psl rst_assertion: assert always( (!rst) -> next (!balance) ) @(posedge clk);
+    // psl rst_assertion: assert always( (!rst) -> next (!balance && !error && !op_done) ) @(posedge clk);
     // psl withdraw_assertion: assert always( (!wrong_psw && operation == 2'b00 && !another_service && !timeout && value < current_balance) -> next[5] (balance == current_balance - value && op_done && card_out && !error) abort !rst) @(posedge clk);
     // psl invalid_withdraw_assertion: assert always( (!wrong_psw && operation == 2'b00 && !another_service && !timeout && value > current_balance) -> next[9] (balance == current_balance && op_done && card_out && error) abort !rst) @(posedge clk);
     // psl deposit_assertion: assert always( (!wrong_psw && operation == 2'b01 && !another_service && !timeout) -> next[5] (balance == current_balance + value && op_done && card_out && !error) abort !rst) @(posedge clk);

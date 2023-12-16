@@ -38,6 +38,8 @@ begin
     if(!rst)
     begin
         balance <= 'b0 ;
+        error <= 0;
+        op_done <= 0;
         error_reg <= 2'b0 ;
         current_state <= idle ;
     end
