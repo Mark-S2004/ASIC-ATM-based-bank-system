@@ -78,15 +78,8 @@ begin
         end
         else
         begin
-            if(language == 1'b0 || language == 1'b1)
-            begin
-                next_state = psw ;
-                restart_timer = 1;
-            end
-            else
-            begin
-                next_state = lang ;
-            end
+            next_state = psw ;
+            restart_timer = 1;
         end
     end
 
